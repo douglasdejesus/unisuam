@@ -1,5 +1,4 @@
 /backend/.env
 /backend/.env.backup
-/backend/vendor
 /.idea
 /.vscode
