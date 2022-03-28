@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h4>Editar indicação</h4>
+        <a href="#" routerLink="/person/index" class="btn btn-primaryt">Voltar</a>
+    </div>
+    <hr />
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label for="title">*Nome completo:</label>
+                <input formControlName="name" [(ngModel)]="person.name" id="name" type="text" class="form-control" maxlength="255" />
+                <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                    <div *ngIf="f.name.errors.required">Nome completo é obrigatório</div>
+                    <div *ngIf="f.name.errors.pattern">O nome completo deve conter apenas letras</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+              <label for="cpf">*CPF:</label>
+              <input formControlName="cpf" [(ngModel)]="person.cpf" id="cpf" type="text" class="form-control" maxlength="11" />
+              <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                  <div *ngIf="f.email.errors.required">CPF é obrigatório.</div>
+                  <div *ngIf="f.email.errors.email">CPF deve conter apenas número</div>
+              </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label for="email">*E-mail:</label>
+                <input formControlName="email" [(ngModel)]="person.email" id="email" type="text" class="form-control" />
+                <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                    <div *ngIf="f.email.errors.required">E-mail é obrigatório.</div>
+                    <div *ngIf="f.email.errors.email">O e-mail deve ser um endereço de e-mail válido.</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label for="phone">*Telefone:</label>
+                <input [(ngModel)]="person.phone" formControlName="phone" id="phone" type="text" class="form-control" />
+                <div *ngIf="f.phone.touched && f.phone.invalid" class="alert alert-danger">
+                    <div *ngIf="f.phone.errors.required">Telefone é obrigatório.</div>
+                    <div *ngIf="f.phone.errors.pattern">O telefone deve conter apenas números</div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <label for="status">Status atual: {{ person.description }}</label>
+                <div *ngIf="person.status_id == 0">
+                    <button type="button" (click)="changeStatus(person.id, 1)" class="btn btn-warning">Alteração stutas (Iniciada)</button>
+                </div>
+                <div *ngIf="person.status_id == 1">
+                    <button type="button" (click)="changeStatus(person.id, 2)" class="btn btn-info">Alteração stutas (Em processo)</button>
+                </div>
+                <div *ngIf="person.status_id == 2">
+                    <button type="button" (click)="changeStatus(person.id, 3)" class="btn btn-success">Alteração stutas (Finalizada)</button>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar alterações</button>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+<section>
+    <div class="d-flex justify-content-between">
+        <h4>Lista de indicações</h4>
+        <a routerLink="/person/create" class="btn btn-success">Nova indicação</a>
+    </div>
+    <br />
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Status</th>
+            <th class="text-center" width="220px">Ações</th>
+        </tr>
+        <tr *ngFor="let person of persons">
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.cpf }}</td>
+            <td>{{ person.phone }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ person.status.description }}</td>
+            <td class="text-center">
+                <a href="#" [routerLink]="['/person/', 'edit', person.id]" class="btn btn-primary">Editar</a>
+                <button type="button" (click)="deletePerson(person.id)" class="btn btn-danger">Excluir</button>
+            </td>
+        </tr>
+    </table>
+</section>
