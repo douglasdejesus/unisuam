@@ -2,6 +2,10 @@
 
 Segue o passo-a-passo para executar o app
 
+cd app-unisuam
+
+npm install
+
 cd backend
 
 composer install
