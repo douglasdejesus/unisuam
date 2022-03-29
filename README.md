@@ -2,7 +2,13 @@
 
 Segue o passo-a-passo para executar o app
 
-Configuração do acesso ao banco de dados
+cd backend
+
+composer install
+
+Configuração do acesso ao banco de dados (.env)
+
+php artisan serve
 
 php artisan migrate
 
